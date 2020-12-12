@@ -18,6 +18,8 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }, format: { with: USERNAME_FORMAT }
 
   before_save :encrypt_password
+  before_save { username.downcase! }
+  before_validation { username.downcase! }
 
   def encrypt_password
     if password.present?
