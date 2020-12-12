@@ -1,6 +1,8 @@
-require 'openssl'
+require "openssl"
+require "uri"
 
 class User < ApplicationRecord
+  USERNAME_FORMAT = /[0-9a-zA-Z_]+/
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
 
@@ -9,12 +11,11 @@ class User < ApplicationRecord
   has_many :questions
 
   validates :email, :username, presence: true
-
   validates :email, :username, uniqueness: true
-
   validates :password, presence: true, on: :create
-
   validates_confirmation_of :password
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :username, length: { maximum: 40 }, format: { with: USERNAME_FORMAT }
 
   before_save :encrypt_password
 
