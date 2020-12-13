@@ -2,7 +2,7 @@ require "openssl"
 require "uri"
 
 class User < ApplicationRecord
-  USERNAME_FORMAT = /[0-9a-zA-Z_]+/
+  USERNAME_FORMAT = /^[0-9a-zA-Z_]+$/
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
 
