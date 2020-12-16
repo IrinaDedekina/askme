@@ -2,7 +2,7 @@ require "openssl"
 require "uri"
 
 class User < ApplicationRecord
-  USERNAME_FORMAT = /[0-9a-zA-Z_]+/
+  USERNAME_FORMAT = /\A[0-9a-zA-Z_]+\z/
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
 
@@ -18,7 +18,6 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }, format: { with: USERNAME_FORMAT }
 
   before_save :encrypt_password
-  before_save { username.downcase! }
   before_validation { username.downcase! }
 
   def encrypt_password
