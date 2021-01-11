@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Хорошие вопросы</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_pack_tag 'application' %>
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_pack_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,12 +19,12 @@
     <div class="header-nav">
       <% if current_user %>
         <%= link_to "@#{current_user.username}", user_path(current_user) %> |
-        <%= link_to 'Выйти', log_out_path %>
+        <%= link_to "Выйти", log_out_path %>
       <% else %>
-        <%= link_to 'Зарегистрироваться', sign_up_path,
-          class: 'button button-light button-small' %>
-        <%= link_to 'Войти', log_in_path,
-          class: 'button button-light button-small' %>
+        <%= link_to "Зарегистрироваться", sign_up_path,
+          class: "button button-light button-small" %>
+        <%= link_to "Войти", log_in_path,
+          class: "button button-light button-small" %>
       <% end %>
     </div>
   </div>
