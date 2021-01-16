@@ -16,7 +16,7 @@ module ApplicationHelper
     remainder100 = number % 100
 
     if remainder100 >= 11 && remainder100 <= 14
-        return many
+      return many
     end
 
     if remainder10 == 1
