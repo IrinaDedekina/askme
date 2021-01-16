@@ -2,6 +2,7 @@ require "openssl"
 require "uri"
 
 class User < ApplicationRecord
+  PROFILE_COLOR_FORMAT = /\A#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/
   USERNAME_FORMAT = /\A[0-9a-zA-Z_]+\z/
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
@@ -16,6 +17,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :username, length: { maximum: 40 }, format: { with: USERNAME_FORMAT }
+  validates :profile_color, format: { with: PROFILE_COLOR_FORMAT}
 
   before_save :encrypt_password
   before_validation { username.downcase! }
