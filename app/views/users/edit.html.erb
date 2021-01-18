@@ -60,6 +60,9 @@
       <div class="form-action buffer-top">
         <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
       </div>
+      <div class="buffer-both">
+        <%= link_to 'Удалить аккаунт', @user, data: { confirm: "Вы уверены, что хотите удалить свой аккаунт?" }, :method => :delete %>
+      </div>
     <% end %>
 
     <%# Подробнее про помощники для создания форм: %>
