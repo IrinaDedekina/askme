@@ -2,7 +2,7 @@ require "openssl"
 require "uri"
 
 class User < ApplicationRecord
-  PROFILE_COLOR_FORMAT = /\A#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/
+  PROFILE_COLOR_FORMAT = /\A\#[[:xdigit:]]{6}\z/
   USERNAME_FORMAT = /\A[0-9a-zA-Z_]+\z/
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
