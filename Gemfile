@@ -11,6 +11,7 @@ gem 'webpacker', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails-i18n'
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :production do
   gem 'pg'
